@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extrato</title>
+</head>
+<link rel="stylesheet" href="estilo.css">
+<body>
+    <center>
+        <input type="radio" name="contas" value="pessoa fisica">
+        <label>pessoa fisica...</label> 
+        <br><br>
+        <input type="radio" name="contas" value="pessoa juridica">
+<label>pessoa juridica...</label>
+<br><br>
+<button onclick="mudapagina()">enviar</button> 
+    <h1>O que é o extrato bancário?</h1>
+    <p>O extrato bancário é um documento que resume todas</p>
+    <p>as suas movimentações bancárias feitas em uma conta</p>
+    <p>em um determinado período. </p>
+    <br>
+    <p>Agora, ele é disponibilizado online, via internet banking</p>
+    <p>e aplicativo das instituições. Também é possível obter o</p>
+    <p>extrato bancário pelos caixas eletrônicos. </p>
+    <br><br>
+    <h1>Por que o extrato bancário é importante? </h1>
+    <p>extrato bancário registra todas as movimentações</p>
+    <p>feitas na sua conta. Com ele, você sabe para onde foi o</p>
+    <p> possível resgatar todo esse histórico mês a</p>
+    <p>mês ao longo dos anos. Dessa forma, você consegue</p>
+    <a href="inicio.html"><button>voltar</button></a>
+    </center>
+    <script>
+        function mudapagina(){
+            const opcoes = document.querySelectorAll('input[name="contas"]');
+            //criar constante chamada opçoes e procurar inputs com nome conta
+            for (const opcao of opcoes) {
+                if (opcao.checked) { // Se a opção estiver selecionada
+                    valorSelecionado = opcao.value; // Armazena o valor da opção
+                    break; // Sai do loop
+                }
+            }
+
+            // Verifica se uma opção foi selecionada
+            if (valorSelecionado) {
+                // Exibe um alerta com a opção selecionada
+                alert(`Você selecionou: ${valorSelecionado}`);
+                if(valorSelecionado =="pessoa juridica"){
+                    window.location.href ="pessoa juridica.html";
+                }
+                else{
+                    window.location.href ="pessoa fisica.html";
+                }
+                
+                // Redireciona para outra página com o valor selecionado como parâmetro
+               // window.location.href = `outra_pagina.html?opcao=${valorSelecionado}`;
+            } else {
+                // Se nenhuma opção estiver selecionada, exibe um alerta
+                alert('Por favor, selecione uma opção.');
+            }
+            
+        }
+    </script>
+    
+</body>
+</html>
