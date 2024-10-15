@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
+<center>
+<h1>Acesse sua Conta</h1>
+<label for="numeroConta">Digite o número da conta:</label>
+<input type="number" id="numeroConta" placeholder="Número da Conta">
+<button onclick="acessarConta()">Acessar Conta</button>
+
+<script>
+    function acessarConta() {
+        const numeroConta = document.getElementById('numeroConta').value;
+
+        // Verifica se o número da conta é válido
+        if (numeroConta) {
+            // Aqui você pode redirecionar para uma página específica ou fazer uma ação
+            // Por exemplo, redirecionar para uma página de conta:
+            window.location.href = `conta${numeroConta}.html`;
+        } else {
+            alert('Por favor, digite um número de conta válido.');
+        }
+    }
+</script>
     <h2>opçoes para ver saldo...</h2>
     <br><br>
     <input type="radio" name="contas">
@@ -29,12 +49,12 @@
 <label>saque...</label>
 <br><br>
 <button>confirmar</button>
-<center>
+
 <h3>cria sistema para clientes</h3>
 <h3>consultarem valores a receber de</h3>
 <h3>bancos e instituições financeiras</h3>
 <a href="inicio.html"><button>voltar</button></a>
-</center>
+
     
 </body>
 </html>
