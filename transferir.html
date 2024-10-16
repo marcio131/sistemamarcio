@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tranferir</title>
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>tranferir</h1>
+    <a id="transferirLink" href="#">Transferir Arquivo</a>
+
+    <!-- Div oculta onde o usuário deve inserir o código -->
+    <div id="formCodigo" style="display:none; margin-top:20px;">
+        <p>Insira o código numérico para liberar a transferência:</p>
+        <input type="text" id="codigo" name="codigo" readonly style="font-size: 20px; width: 200px; text-align: center;">
+        <div class="teclado" id="tecladoNumerico">
+            <!-- Botões numéricos -->
+            <button type="button" onclick="inserirNumero(1)">1</button>
+            <button type="button" onclick="inserirNumero(2)">2</button>
+            <button type="button" onclick="inserirNumero(3)">3</button>
+            <button type="button" onclick="inserirNumero(4)">4</button>
+            <button type="button" onclick="inserirNumero(5)">5</button>
+            <button type="button" onclick="inserirNumero(6)">6</button>
+            <button type="button" onclick="inserirNumero(7)">7</button>
+            <button type="button" onclick="inserirNumero(8)">8</button>
+            <button type="button" onclick="inserirNumero(9)">9</button>
+            <button type="button" onclick="inserirNumero(0)">0</button>
+            <button type="button" onclick="apagarNumero()">Apagar</button>
+        </div>
+        <br>
+        <button type="button" id="confirmarCodigo">Confirmar Código</button>
+        <p id="mensagemErro" style="color:red;"></p>
+    </div>
+
+    <script>
+        // Quando o link de transferência for clicado, exibir o teclado numérico e o campo de código
+        document.getElementById("transferirLink").addEventListener("click", function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            document.getElementById("formCodigo").style.display = "block"; // Exibe o campo e teclado
+            this.style.display = "none"; // Oculta o link de transferência
+        });
+
+        // Função para inserir números no campo de código
+        function inserirNumero(numero) {
+            var campoCodigo = document.getElementById("codigo");
+            campoCodigo.value += numero;
+        }
+
+        // Função para apagar o último número digitado
+        function apagarNumero() {
+            var campoCodigo = document.getElementById("codigo");
+            campoCodigo.value = campoCodigo.value.slice(0, -1); // Remove o último dígito
+        }
+
+        // Verificar código e redirecionar ou exibir erro
+        document.getElementById("confirmarCodigo").addEventListener("click", function() {
+            var codigoInserido = document.getElementById("codigo").value;
+            var codigoCorreto = "1234"; // Código correto para liberar a transferência
+
+            if (codigoInserido === codigoCorreto) {
+                // Código correto, inicia o download do arquivo
+                window.location.href = "seu_arquivo.zip"; // Ou redireciona para outra página
+            } else {
+                // Exibe uma mensagem de erro
+                document.getElementById("mensagemErro").textContent = "Código incorreto. Tente novamente.";
+            }
+        });
+    </script>
+<a href="inicio.html"><button>voltar</button></a>
+</body>
+</html>
